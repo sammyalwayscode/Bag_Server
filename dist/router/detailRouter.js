@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const detailController_1 = require("../controller/detailController");
+const multer_1 = require("../config/multer");
+const router = (0, express_1.Router)();
+router.route("/:id").get(detailController_1.getDetail);
+router.route("/:id/detail").post(multer_1.uploadDetail, detailController_1.createDetail);
+router.route("/update/:id").patch(multer_1.uploadDetail, detailController_1.updateProductDetail);
+router.route("/remove/:id").delete(detailController_1.deleteProductDetail);
+exports.default = router;
