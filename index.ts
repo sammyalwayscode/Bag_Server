@@ -1,4 +1,5 @@
 import express, { Application, Request, Response } from "express";
+import cors from "cors";
 import productsRouter from "./router/productRouter";
 import detailRouter from "./router/detailRouter";
 import orderRouter from "./router/orderRouter";
@@ -8,6 +9,7 @@ require("dotenv").config();
 const PORT = process.env.PORT || 3002;
 const app: Application = express();
 
+app.use(cors({ origin: "*" }));
 app.set("view engine", "ejs");
 app.use(express.json());
 app.get("/", (req: Request, res: Response): Response => {
